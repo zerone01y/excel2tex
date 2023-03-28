@@ -33,6 +33,9 @@ class TextProp:
         # inline math
         if not cell.args.math:
             text = text.replace('$', r'\$')
+        else:
+            if ("\\" in text or "_" in text) and ("$" not in text):
+                text = f"$ {text} $"
         # line break
         text = text.replace('\n', r' \\')
         # excel format
