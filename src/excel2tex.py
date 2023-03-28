@@ -1,8 +1,8 @@
 import argparse
 from openpyxl import load_workbook
-from src.Table import Table
+from excel2tex.Table import Table
 
-if __name__ == '__main__':
+def run():
     parser = argparse.ArgumentParser(
             description='Convert excel table to latex table.',
             formatter_class=argparse.RawTextHelpFormatter,
@@ -25,3 +25,6 @@ if __name__ == '__main__':
     t = Table(ws, args)
     with open(args.target, 'w', encoding=args.encoding) as f:
         f.write(t.tex)
+
+if __name__ == '__main__':
+    run()

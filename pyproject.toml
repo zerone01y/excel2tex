@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "excel2tex"
+version = "0.1.1"
+description = "Convert excel table to latex table"
+authors = ["ZhiyuanLck <lichangkai225@qq.com>"]
+license = "GPL-3.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+openpyxl = "^3.1.2"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
