@@ -1,5 +1,6 @@
 import argparse
 from openpyxl import load_workbook
+from collections import namedtuple
 from excel2tex.Table import Table
 
 def run():
@@ -25,6 +26,18 @@ def run():
     t = Table(ws, args)
     with open(args.target, 'w', encoding=args.encoding) as f:
         f.write(t.tex)
+
+def convert_table(source, target="", setting="setting.tex", width="\\linewidth", encoding="utf-8", math=False, excel_format=False):
+    excel2tex_args = namedtuple('excel2tex_args', ['source', 'target', 'setting', 'width', 'encoding', 'math', 'excel_format'])
+    wb = load_workbook(source)
+    ws = wb.active
+    args = excel2tex_args(source, target, setting, width, encoding, math, excel_format)
+    t = Table(ws, args)
+    if target:
+        with open(target, 'w', encoding=encoding) as f:
+                f.write(t.tex)
+    else:
+        return t.tex
 
 if __name__ == '__main__':
     run()
